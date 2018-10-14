@@ -1,0 +1,81 @@
+html,
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      font-family:monospace;
+    }
+    #preview {
+      width: 100%;
+
+    }
+    #output div {
+
+      padding: 15px 5px;
+    }
+    #wrap {
+      position: relative;
+
+
+    }
+    #wrap::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 0;
+      padding-bottom: 65%;
+      background: transparent;
+      border: rgba(255, 255, 255, 0.6) 6px dashed;
+      box-sizing: border-box;
+      border-radius: 40px;
+      display: block;
+      left: 50%;
+      top: -1200%;
+      z-index: 5;
+      transform: translate(-50%, -50%);
+
+    }
+    #main {
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .button {
+    position: relative;
+    background-color: #4CAF50;
+    border: none;
+    font-size: 28px;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+    /*padding: 10px;*/
+    /*width: 200px;*/
+    height: 40px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.button:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    /*position: absolute;*/
+    /*padding-top: 300%;*/
+    /*padding-left: 350%;*/
+    /*margin-left: -20px !important;*/
+    /*margin-top: -120%;*/
+    opacity: 0;
+    height: 45px;
+    transition: all 0.8s
+}
+
+.button:active:after {
+    /*padding: 0;*/
+    /*margin: 0;*/
+    opacity: 1;
+    transition: 0s
+}

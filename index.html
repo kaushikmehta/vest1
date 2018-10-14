@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scanner</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+
+
+     <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+     <!-- Web3 -->
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+
+
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script type="text/javascript" src="instascan.min.js"></script>
+
+    <!-- Ethers -->
+
+    <script charset="utf-8" src="https://cdn.ethers.io/scripts/ethers-v3.min.js" type="text/javascript"></script>
+
+
+  </head>
+  <body>
+      <nav>
+    <div class="nav-wrapper grey darken-1">
+      <a href="#" class="brand-logo"><img src="img/logo.svg"></a>
+
+      <div id="accountDiv">
+          <p id="accountText"></p>
+      </div>
+
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>  <a class=" modal-trigger btn-floating btn-large waves-effect waves-light blue" onclick="changePicture()" href="#modal2"><i class="material-icons">settings_ethernet</i></a></li>
+
+
+          <li>  <a class="btn-floating btn-large waves-effect waves-light blue" onclick="callScanner()"><i class="material-icons">add_to_queue</i></a></li>
+         
+
+        <li>  <a id = "checkOwner" class="disabled modal-trigger btn-floating btn-large waves-effect waves-light blue" onclick="checkOwner()" href="#modal1"><i class="material-icons">verified_user</i></a></li>
+
+        <li>  <a class="disabled btn-floating btn-large waves-effect waves-light teal accent-3" id="mint" onclick="mintHouse()"><i class="custom material-icons">add</i></a></li>
+      </ul>
+    </div>
+  </nav>
+        
+    <div id="main">
+    
+
+      <!-- <input type='text' id='yourInputFieldId' /> -->
+      <!-- <p id="yourInputFieldId"></p> -->
+
+
+      <div id="output"></div>
+
+      
+
+      <!-- <button class="button" onclick="callScanner()">Call Scanner</button> -->
+
+
+
+      <div id="wrap" style="display: none">
+        <video id="preview"></video>
+      </div>
+
+      <!-- <div>
+          <button class="button" id = 'verifyOwner' style="display: ;" onclick="verifyOwner()">Verify Owner</button>
+      </div> -->
+
+
+    <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h5>Verifying Ownership of Token</h5>
+      <p id="customVerification" ></p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" onclick="enableMint()" class="modal-close waves-effect waves-green btn-flat">Close</a>
+      <!-- <a href="#!"  class="waves-effect waves-green btn-flat">Close</a> -->
+    </div>
+  </div>
+
+
+    <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h5>Your Shirts</h5>
+      
+      
+      <div id="myOwnedTokens">
+        <ul id="tokenlist">
+          
+        </ul>
+
+
+      </div>
+    </div>
+    <div class="modal-footer">
+      <input type="number" placeholder= "TokenId" style="width: 60%" name="" id="tid">
+
+      <a href="#!" onclick="putTokenOnSale()" class="modal-close waves-effect waves-green btn-flat">Transfer Token</a>
+
+      <a href="#!" onclick="showID()" class="waves-effect waves-green btn-flat" >Show Token IDs</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Done</a>
+    </div>
+  </div>
+
+
+      <div id="modal3" class="modal">
+    <div class="modal-content">
+      <h5>Contract Address to Receive Money</h5>
+      <div id="cont">
+        
+          
+        
+
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" onclick="putTokenOnSale()" class="waves-effect waves-green btn-flat">Transfer Token</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Done</a>
+    </div>
+  </div>
+
+
+  <!-- SHOW OWNED TOKEN -->
+  <!-- <button class="get" onclick="changePicture()">Display My Portfolio</button>
+
+  <div id="housediv">
+    
+  </div> -->
+          
+<!-- SHOW OWNED TOKEN -->          
+
+
+
+      <!-- <div id="nextSteps" style="display: none;"> -->
+        <!-- <div id="nextSteps">
+          <button class="button" id = 'mintToken' style="display: none;" onclick="mintHouse()">Mint Token</button>
+
+          <button class="button" id = 'getOwned' style="display:none;" onclick="getOwnedTokens()">Find Ownwers</button>
+
+          <button class="button" id = 'multiSig' style="display: none; ;" onclick="">Resell Token</button>
+      </div> -->
+
+
+    </div> <!-- Main -->
+
+
+
+<!--     <script type="text/javascript">
+      let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+      scanner.addListener('scan', function (content) {
+
+        let p = document.createElement("div");
+        p.innerHTML = content;
+        document.getElementById("output").appendChild(p)
+
+
+      });
+      Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+          scanner.start(cameras[0]);
+        } else {
+          console.error('No cameras found.');
+        }
+      }).catch(function (e) {
+        console.error(e);
+      });
+    </script> -->
+    <script type="text/javascript" src="scanner.js"></script>
+    <script type="text/javascript" src="contractStuff.js"></script>
+
+    <script type="text/javascript">
+        
+        const verifyaccount = () => {
+        console.log("load event detected!");
+      } 
+      window.onload = identifyAccount; 
+
+      UpdateDapp();
+
+
+       document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+        });
+
+
+    </script>
+
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+  </body>
+</html>

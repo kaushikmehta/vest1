@@ -1,0 +1,61 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+nav .brand-logo {
+    position: absolute;
+    color: #fff;
+    display: inline-block;
+    font-size: 2.1rem;
+    padding: 0.2em 1em;
+}
+
+ul:not(.browser-default) {
+    padding: 0 4em;
+    list-style-type: none;
+}
+
+.custom {
+	color: black !important;
+}
+
+#accountDiv {
+	display: inline-block;
+	margin-left: 20%;
+	margin-top: -1%;
+}
+
+.modal-content {
+	color: black;
+}
+
+.token {
+    height: 35px;
+}
+#tokenlist {
+    list-style: none;
+}
+
+[type="radio"]:not(:checked), [type="radio"]:checked {
+    position: absolute;
+    opacity: 1;
+    vertical-align: middle;
+    margin: 5px 25px;
+    pointer-events: none;
+}
+
+
+.modal {
+    min-height: 275px;
+}
